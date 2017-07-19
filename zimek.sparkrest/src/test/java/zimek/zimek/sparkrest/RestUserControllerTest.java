@@ -36,7 +36,7 @@ public class RestUserControllerTest {
 	
 	@Test
 	public void aNewUserShouldBeCreated() {
-		TestResponse res = request("POST", "/users?name=john&email=john@foobar.com");
+		TestResponse res = request("POST", "/api/users?name=john&email=john@foobar.com");
 		Map<String, String> json = res.json();
 		assertEquals(200, res.status);
 		assertEquals("john", json.get("name"));
@@ -47,7 +47,7 @@ public class RestUserControllerTest {
 	
 	@Test
 	public void shouldReturnOneUser() {
-		TestResponse res = request("GET", "/users");
+		TestResponse res = request("GET", "/api/users");
 		List<Map<String, String>> json = res.jsonList();
 		assertEquals(200, res.status);
 		assertEquals("john", json.get(0).get("name"));
